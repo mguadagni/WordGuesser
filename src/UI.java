@@ -7,5 +7,6 @@ public class UI {
         System.out.println(question + "\nInput: ");
         String inputString = scanner.nextLine();
         return inputString;
+
     }
 }
