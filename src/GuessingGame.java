@@ -7,23 +7,29 @@ public class GuessingGame {
 
     public static void main(String[] args) {
         System.out.println("Welcome to Word Guesser!");
+        pickAWord();
         guessingGame();
     }
 
     static int numOfGuesses = 0;
+    static int numOfDashes = 0;
+    static String playedWord = "";
 
-    private static void guessingGame() {
+    public static void pickAWord() {
         String[] playableWords = new String[] {
                 "guessing", "these", "words",
                 "is", "very", "easy"
         };
         int randomNumber = (int)(Math.random() * 5);
-        String playedWord = playableWords[randomNumber];
+        playedWord = playableWords[randomNumber];
 
-        int numOfDashes = 0;
+        numOfDashes = 0;
         for (int i = 0; i < playedWord.length(); i++){
             numOfDashes++;
         }
+    }
+
+    public static void guessingGame() {
 
         while(true) {
             System.out.println("_".repeat(numOfDashes));
@@ -58,12 +64,10 @@ public class GuessingGame {
                 System.out.println(guessedCharacter + " is correct and was found " + numOfChar + " times.");
                 System.out.println("Guesses: " + numOfGuesses);
                 System.out.println(Arrays.toString(charArr));
-                guessingGame();
             } else {
                 System.out.println(guessedCharacter + " was not found, try again.");
                 System.out.println("Guesses: " + numOfGuesses);
                 System.out.println(Arrays.toString(charArr));
-//                guessingGame();
             }
 
             //System.out.println(playableWords.indexOf(guessedCharacter));
