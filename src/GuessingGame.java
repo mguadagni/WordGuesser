@@ -13,7 +13,12 @@ public class GuessingGame {
 
     static int numOfGuesses = 0;
     static int numOfDashes = 0;
-    static String playedWord = "";
+    static String selectedWord = "";
+    ArrayList<Character> wrongCharacterArray = new ArrayList<Character>();
+    ArrayList<Character> correctCharacterArray = new ArrayList<Character>();
+
+//    char[] wrongCharacterArray = {};
+//    char[] correctCharacterArray = {};
 
     public static void pickAWord() {
         String[] playableWords = new String[] {
@@ -21,10 +26,10 @@ public class GuessingGame {
                 "is", "very", "easy"
         };
         int randomNumber = (int)(Math.random() * 5);
-        playedWord = playableWords[randomNumber];
+        selectedWord = playableWords[randomNumber];
 
         numOfDashes = 0;
-        for (int i = 0; i < playedWord.length(); i++){
+        for (int i = 0; i < selectedWord.length(); i++){
             numOfDashes++;
         }
     }
@@ -46,15 +51,16 @@ public class GuessingGame {
 //        }
 
             int numOfChar = 0;
-            for (int i = 0; i < playedWord.length(); i++) {
-                if (guessedCharacter == playedWord.charAt(i)) {
+            for (int i = 0; i < selectedWord.length(); i++) {
+                if (guessedCharacter == selectedWord.charAt(i)) {
                     numOfChar++;
+
                 }
             }
             int[] charArr = new int[numOfChar];
             numOfChar = 0;
-            for (int i = 0; i < playedWord.length(); i++) {
-                if (guessedCharacter == playedWord.charAt(i)) {
+            for (int i = 0; i < selectedWord.length(); i++) {
+                if (guessedCharacter == selectedWord.charAt(i)) {
                     charArr[numOfChar] = i;
                     numOfChar++;
                 }
@@ -64,6 +70,7 @@ public class GuessingGame {
                 System.out.println(guessedCharacter + " is correct and was found " + numOfChar + " times.");
                 System.out.println("Guesses: " + numOfGuesses);
                 System.out.println(Arrays.toString(charArr));
+
             } else {
                 System.out.println(guessedCharacter + " was not found, try again.");
                 System.out.println("Guesses: " + numOfGuesses);
