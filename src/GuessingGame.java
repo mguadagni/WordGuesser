@@ -14,8 +14,8 @@ public class GuessingGame {
     static int numOfGuesses = 0;
     static int numOfDashes = 0;
     static String selectedWord = "";
-    ArrayList<Character> wrongCharacterArray = new ArrayList<Character>();
-    ArrayList<Character> correctCharacterArray = new ArrayList<Character>();
+    static ArrayList<Character> wrongCharacterArray = new ArrayList<Character>();
+    static ArrayList<Character> correctCharacterArray = new ArrayList<Character>();
 
 //    char[] wrongCharacterArray = {};
 //    char[] correctCharacterArray = {};
@@ -54,7 +54,7 @@ public class GuessingGame {
             for (int i = 0; i < selectedWord.length(); i++) {
                 if (guessedCharacter == selectedWord.charAt(i)) {
                     numOfChar++;
-
+                    correctCharacterArray.add(guessedCharacter);
                 }
             }
             int[] charArr = new int[numOfChar];
@@ -65,6 +65,7 @@ public class GuessingGame {
                     numOfChar++;
                 }
             }
+            System.out.println(correctCharacterArray);
 
             if (numOfChar > 0) {
                 System.out.println(guessedCharacter + " is correct and was found " + numOfChar + " times.");
